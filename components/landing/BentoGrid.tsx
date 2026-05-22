@@ -27,7 +27,7 @@ export default function BentoGrid() {
     );
   }, { scope: sectionRef });
 
-  // Custom Visual Styling Engine
+  // Custom Visual Styling Engine (Unchanged)
   const getCardStyles = (id: string) => {
     switch (id) {
       case 'tech-talks':
@@ -99,9 +99,22 @@ export default function BentoGrid() {
 
   return (
     <section ref={sectionRef} className="section-padding bg-[#020408] text-white overflow-hidden">
-      {/* 🚀 Upscaled and Anti-Overflow Structural Engine */}
+      {/* Dynamic Structural Responsive Grid Engine */}
       <style dangerouslySetInnerHTML={{ __html: `
-        @media (min-width: 768px) {
+        /* 📱 Tablet Viewports (Clean 2-Column Grid Setup) */
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .bento-grid-container {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            grid-auto-flow: row dense !important;
+          }
+          /* Make major highlight feature components wider on tablet sizes */
+          .bento-hackathons { grid-column: span 2 !important; }
+          .bento-industry-connect { grid-column: span 2 !important; }
+        }
+
+        /* 🖥️ Large Desktop Viewports (Your exact original Bento Matrix) */
+        @media (min-width: 1024px) {
           .bento-grid-container {
             display: grid !important;
             grid-template-columns: repeat(4, 1fr) !important;
@@ -120,7 +133,7 @@ export default function BentoGrid() {
         }
       `}} />
 
-      <div className="container-wide">
+      <div className="container-wide px-4 md:px-8 mx-auto">
         <SectionHeader title="What We Offer" subtitle="A complete ecosystem for tech enthusiasts" accent="sage" />
 
         {/* Base Structural Container Grid */}
@@ -168,7 +181,7 @@ export default function BentoGrid() {
                   <h3 className={`text-xl font-bold ${styles.textColor}`} style={{ fontFamily: 'var(--font-display)', letterSpacing: '-0.01em' }}>
                     {feature.title}
                   </h3>
-                  <p className={`text-xs md:text-sm leading-relaxed max-w-[310px] ${styles.descColor}`}>
+                  <p className={`text-sm leading-relaxed ${styles.descColor}`}>
                     {feature.description}
                   </p>
                 </div>
